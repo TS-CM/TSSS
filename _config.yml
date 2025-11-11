@@ -43,3 +43,26 @@ paginate_path: "/news/page:num/"
 
 # Permalinks for posts
 permalink: /news/:year-:month-:day-:title/
+
+
+# Jekyll settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude files from processing
+exclude:
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - _site/
+  - .nojekyll
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:path/
