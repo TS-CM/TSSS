@@ -1,0 +1,45 @@
+
+# Site configuration for Tianxing Temple website
+# Base URL and domain settings
+baseurl: ""
+url: ""
+title: "天星宮"
+description: "天星宮官方網站 | 公告、行事曆、活動相簿、聯絡我們"
+timezone: Asia/Taipei
+
+# Navigation structure for header
+nav:
+  - name: 首頁
+    url: /
+  - name: 公告
+    url: /news/
+  - name: 行事曆
+    url: /events/
+  - name: 關於我們
+    url: /about/
+  - name: 聯絡我們
+    url: /contact/
+  - name: 試算表
+    url: /sheet/
+
+    
+
+# Collections configuration
+collections:
+  events:
+    output: true
+    permalink: /events/:year-:month-:day-:slug/
+
+# Plugins allowed by GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Pagination settings
+paginate: 5
+paginate_path: "/news/page:num/"
+
+# Permalinks for posts
+permalink: /news/:year-:month-:day-:title/

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+  <header class="banner">
+    <img src="{{ '/assets/img/decorative_banner.png' | relative_url }}" alt="decorative banner">
+    <nav>
+      <ul>
+        {% for item in site.nav %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+  <main class="content">
+    {{ content }}
+  </main>
+  <footer class="footer">
+    <p>© {{ site.time | date: '%Y' }} {{ site.title }}。版權所有。</p>
+  </footer>
+</body>
+</html>
