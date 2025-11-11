@@ -1,29 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  {% seo %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}{% if page.title %} | {{ page.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {% seo %}
 </head>
 <body>
-  <header class="banner">
-    <img src="{{ '/assets/img/decorative_banner.png' | relative_url }}" alt="decorative banner">
-    <nav>
-      <ul>
-        {% for item in site.nav %}
-        <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </header>
-  <main class="content">
-    {{ content }}
-  </main>
-  <footer class="footer">
-    <p>© {{ site.time | date: '%Y' }} {{ site.title }}。版權所有。</p>
-  </footer>
+    <div class="site-wrapper">
+        <!-- Header/Navigation -->
+        <header class="site-header">
+            <div class="header-container">
+                <div class="site-title">
+                    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+                </div>
+                <nav class="site-nav">
+                    <ul class="nav-list">
+                        {% for item in site.nav %}
+                            <li class="nav-item">
+                                <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>
+                                    {{ item.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="site-content">
+            <div class="content-container">
+                {% if page.title %}
+                    <h1 class="page-title">{{ page.title }}</h1>
+                {% endif %}
+                
+                {{ content }}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+                    <p>{{ site.description }}</p>
+                </div>
+                <div class="footer-links">
+                    <ul class="social-links">
+                        {% if site.github %}
+                            <li><a href="https://github.com/{{ site.github }}" target="_blank">GitHub</a></li>
+                        {% endif %}
+                        {% if site.email %}
+                            <li><a href="mailto:{{ site.email }}">Email</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
